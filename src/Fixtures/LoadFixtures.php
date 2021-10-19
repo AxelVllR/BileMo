@@ -37,7 +37,8 @@ class LoadFixtures extends Fixture
                             ->setStorage(rand(64, 1000))
                             ->setBrand($brand)
                             ->setSize(rand(4, 12))
-                            ->setPrice(rand(800, 2684));
+                            ->setPrice(rand(800, 2684))
+                            ;
             
             $manager->persist($product);
 
