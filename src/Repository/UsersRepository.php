@@ -2,9 +2,11 @@
 
 namespace App\Repository;
 
+use App\Entity\Client;
 use App\Entity\Users;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Form\ClickableInterface;
 
 /**
  * @method Users|null find($id, $lockMode = null, $lockVersion = null)
@@ -33,8 +35,18 @@ class UsersRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
+    }*/
+
+    public function findByClient(Client $client)
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.client = :client')
+            ->setParameter('client', $client)
+            ->orderBy('u.id', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Users
