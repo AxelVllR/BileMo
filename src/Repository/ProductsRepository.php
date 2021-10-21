@@ -45,6 +45,12 @@ class ProductsRepository extends ServiceEntityRepository
             ->getQuery()
             ->getOneOrNullResult()
         ;
+    }*/
+
+    public function findAllQuery()
+    {
+        return $this->createQueryBuilder('p')
+            ->getQuery()
+        ;
     }
-    */
 }

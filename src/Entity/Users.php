@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\UsersRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -16,7 +17,7 @@ class Users
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups("users:read")
+     * @Groups({"users:read", "user:read"})
      */
     private $id;
 
@@ -28,27 +29,35 @@ class Users
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("users:read")
+     * @Groups({"users:read", "user:read", "user:add"})
+     * @Assert\NotBlank
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("users:read")
+     * @Groups({"users:read", "user:read", "user:add"})
+     * @Assert\NotBlank
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("users:read")
+     * @Groups({"user:read", "user:add"})
+     * @Assert\Email
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups("users:read")
+     * @Groups({"user:read", "user:add"})
      */
     private $phone_number;
+
+    /**
+     * @Groups("users:read")
+     */
+    private $path;
 
     public function getId(): ?int
     {
@@ -113,5 +122,10 @@ class Users
         $this->phone_number = $phone_number;
 
         return $this;
+    }
+
+    public function getPath(): string
+    {
+        return "/api/users/" . $this->id;
     }
 }

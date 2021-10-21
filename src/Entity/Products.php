@@ -15,13 +15,13 @@ class Products
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups("product")
+     * @Groups({"products", "product"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("product")
+     * @Groups({"products", "product"})
      */
     private $name;
 
@@ -45,9 +45,14 @@ class Products
 
     /**
      * @ORM\Column(type="float")
-     * @Groups("product")
+     * @Groups({"products", "product"})
      */
     private $price;
+
+    /**
+     * @Groups("products")
+     */
+    private $path;
 
     public function getId(): ?int
     {
@@ -112,5 +117,10 @@ class Products
         $this->price = $price;
 
         return $this;
+    }
+
+    public function getPath(): string 
+    {
+        return "/api/products/" . $this->id;
     }
 }

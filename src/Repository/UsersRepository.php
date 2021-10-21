@@ -44,7 +44,19 @@ class UsersRepository extends ServiceEntityRepository
             ->setParameter('client', $client)
             ->orderBy('u.id', 'DESC')
             ->getQuery()
-            ->getResult()
+        ;
+    }
+
+    public function findOneByClient(Client $client, $id)
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.client = :client')
+            ->setParameter('client', $client)
+            ->andWhere('u.id = :id')
+            ->setParameter("id", $id)
+            ->orderBy('u.id', 'DESC')
+            ->getQuery()
+            ->getOneOrNullResult()
         ;
     }
 
