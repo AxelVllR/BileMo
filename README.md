@@ -1,4 +1,4 @@
-# Projet 7 - OpenClassrooms - BileMo
+# Projet 7 - OpenClassrooms - BileMo - [![Codacy Badge](https://app.codacy.com/project/badge/Grade/97cd95f80ae74618b97e6f410e2f4bfd)](https://www.codacy.com/gh/AxelVllR/BileMo/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=AxelVllR/BileMo&amp;utm_campaign=Badge_Grade)
 ## _Parcours Développeur d'application - PHP / Symfony_
 
 
@@ -40,7 +40,7 @@ php bin/console doctrine:fixtures:load (enregistrement des données de tests)
 php bin/console server:run OU symfony serve
 ```
 
-- Accédez à l'url 'localhost:8000/doc' afin de visualiser la documentation API
+- Accédez à l'url '127.0.0.1:8000/api/doc' afin de visualiser la documentation API
 
 - ENJOY !
  
