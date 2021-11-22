@@ -141,13 +141,13 @@ class UsersController extends AbstractController {
 
         $userForm = $this->createForm(UserType::class, $user);
         $userForm->submit($data);
+        
 
         if($userForm->isValid()) {
             $this->em->persist($user);
             $this->em->flush();
             $user = $this->api->normalizeUser($user);
             return $this->api->createdResponse($user);
-
         } else {
             $errors = FormHelper::getErrors($userForm);
             return $this->api->badRequest($errors);

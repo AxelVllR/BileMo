@@ -45,12 +45,14 @@ class Users
      * @ORM\Column(type="string", length=255)
      * @Groups({"user:read", "user:add"})
      * @Assert\Email
+     * @Assert\NotBlank
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"user:read", "user:add"})
+     * @Assert\NotBlank
      */
     private $phone_number;
 

@@ -24,11 +24,10 @@ class ExceptionListener
             $response->setStatusCode(Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
-        $message = sprintf(
-            'Error: %s with code: %s',
-            $exception->getMessage(),
-            $response->getStatusCode()
-        );
+        $message = json_encode([
+            "error" => $exception->getMessage(),
+            "code" => $response->getStatusCode()
+        ]);
 
         $response->setContent($message);
 
